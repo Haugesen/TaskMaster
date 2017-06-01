@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:100,200,300,400,700,800" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="draggable-area"></div>
+        <input class="inputs" type="text" placeholder="Add a task..." id="add-item-text">
+        <button id="add-item-btn"></button>
+    </div>
+    
+    <div class="wrapper">
+        
+        <div class="task-container">
+            <h2>Todo</h2>
+            <p>You have nothing to do. Enjoy!</p>
+            
+            <ul class="todo">
+            </ul>
+        </div>
+        
+        <div id="separation-line"></div>
+        
+        <div class="task-container">
+            <h2>Done</h2>
+            <p>No completed tasks. Do something!</p>
+
+            <ul class="done">            
+            </ul>
+        </div>
+    
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
