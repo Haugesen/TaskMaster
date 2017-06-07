@@ -117,9 +117,8 @@ input:focus{
 
 /* TASK CONTENT */
 
-.wrapper{
+.content{
     margin-top: 125px;
-
 }
 
 ul{
@@ -127,7 +126,6 @@ ul{
     margin: 0px;
     padding: 0px;
 }
-
 
 ul li{
     min-height: 90px;
@@ -139,7 +137,6 @@ ul li{
     position: relative;
     display: flex;
     flex-direction: column;
-    transition-duration: .2s;
 }
 
 .todo li{
@@ -201,6 +198,11 @@ ul li{
     background-size: 18px;
 }
 
+.completed-done{
+    background-image: url(../graphics/done_icon.png);
+    background-size: 23px;
+}
+
 .delete{
     background-size: 14px;
     background-image: url(../graphics/trash_icon.png);
@@ -213,7 +215,7 @@ ul li{
     background: rgba(162, 169, 186, 0.30);
 }
 
-/* SHOW/HIDE INFO */
+/* SHOW/HIDE TO-DO AND DONE INFO */
 
 .task-container p {
     display: none;
@@ -222,4 +224,3 @@ ul li{
 .task-container.empty p {
     display: block;
 }
-

@@ -1,15 +1,16 @@
-//      _____           _           _    __   __
-//     |  __ \         (_)         | |   \ \ / /
-//     | |__) | __ ___  _  ___  ___| |_   \ V / 
-//     |  ___/ '__/ _ \| |/ _ \/ __| __|   > <  
-//     | |   | | | (_) | |  __/ (__| |_   / . \ 
-//     |_|   |_|  \___/| |\___|\___|\__| /_/ \_\
-//                    _/ |                      
-//                   |__/                       
-//                              By Joachim Hauge
+//    _______        _    __  __           _            
+//   |__   __|      | |  |  \/  |         | |           
+//      | | __ _ ___| | _| \  / | __ _ ___| |_ ___ _ __ 
+//      | |/ _` / __| |/ / |\/| |/ _` / __| __/ _ \ '__|
+//      | | (_| \__ \   <| |  | | (_| \__ \ ||  __/ |   
+//      |_|\__,_|___/_|\_\_|  |_|\__,_|___/\__\___|_|   
+//                                                    
+//                  A pure to-do app                                                 
+//                                                    
+//                                   By Joachim Hauge
 
 
-// load todo items
+// Load todo items
 var itemInput   = document.querySelector('#add-item-text');
 var todoListDiv = document.querySelector('.todo');
 var doneListDiv = document.querySelector('.done');
@@ -49,31 +50,28 @@ for (var i = 0; i < doneList.length; i++) {
 
 function addNewToDoItem() {
 
-    // get task title
+    // Get task title
     var taskTitle = itemInput.value.trim();
     itemInput.value = '';
 
-    // create a task object
+    // Create a task object
     var task = {
         "title": taskTitle,
-        "date": "Set date",
         "id": Date.now()
     };
 
-    // add task to the page
+    // Add task to the page
     addTodoToPage(task);
 
-    // get todo items from the local store
+    // Get todo items from the local store
     var todoListStore = JSON.parse(localStorage.getItem("todo")) || [];
     todoListStore.push(task);
 
-    // save todo items to the local store
+    // Save todo items to the local store
     localStorage.setItem("todo", JSON.stringify(todoListStore));
 };
 
-/*
-    addTODOToPage(task[Object])
-*/
+// Add todo items to page
 function addTodoToPage(task) {
     
     todoListDiv.parentElement.classList.remove('empty');
@@ -81,15 +79,14 @@ function addTodoToPage(task) {
     var taskElement = document.createElement('li');
     taskElement.innerHTML = `${task.title} 
                     <div class="item-options">
-                        <!--input class="set-date" type="text" placeholder="Set date"-->
                         <button class="options completed"></button>
                         <div class="separation-options"></div>
                         <button class="options delete"></button>
                     </div>`;
-
+    
     todoListDiv.appendChild(taskElement);
     
-    // add delete button
+    // Add delete button
     var deleteButton = taskElement.querySelector('.delete');
     
     deleteButton.addEventListener('mousedown', function (event) {
@@ -98,7 +95,7 @@ function addTodoToPage(task) {
         removeItemFromLocalStore("todo", task.id);
     });
     
-    // add done button
+    // Add done button
     var doneButton = taskElement.querySelector('.completed');
     
     doneButton.addEventListener('mousedown', function (event) {
@@ -106,7 +103,7 @@ function addTodoToPage(task) {
         addDoneToPage(task);
         
         
-        // get todo items from the local store
+        // Get todo items from local storage
         var doneListStore = JSON.parse(localStorage.getItem("done")) || [];
         doneListStore.push(task);
         localStorage.setItem("done", JSON.stringify(doneListStore));
@@ -116,9 +113,7 @@ function addTodoToPage(task) {
     });
 }
 
-/*
-    addDoneToPage(task[Object])
-*/
+// Add Done items to page
 function addDoneToPage(task) {
     
     doneListDiv.parentElement.classList.remove('empty');
@@ -126,6 +121,8 @@ function addDoneToPage(task) {
     var taskElement = document.createElement('li');
     taskElement.innerHTML = `${task.title} 
                     <div class="item-options">
+                        <button class="options completed-done"></button>
+                        <div class="separation-options"></div>
                         <button class="options delete"></button>
                     </div>`;
 
@@ -141,9 +138,7 @@ function addDoneToPage(task) {
     });
 }
 
-/*
-    removeItemFromLocalStore(storeKey[String], id[Number])
-*/
+// Remove item from local storage 
 function removeItemFromLocalStore(storeKey, id) {
     
     var itemList = JSON.parse(localStorage.getItem(storeKey));
